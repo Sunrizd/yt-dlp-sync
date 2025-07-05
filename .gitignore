@@ -1,0 +1,3 @@
+# .gitignore
+/config/.env
+config/logs/yt-dlp-sync.log
