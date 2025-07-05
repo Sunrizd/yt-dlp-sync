@@ -107,15 +107,6 @@ To run the synchronization:
 ```bash
 ./yt-dlp-sync.sh
 ```
-You can also set up a cron job to run this script automatically at regular intervals (e.g., daily):
-```bash
-# Open cron editor for root user
-sudo crontab -e
-
-# Add a line to run the script daily at 3:00 AM
-# 0 3 * * * /path/to/your/cloned/repo/yt-dlp-sync.sh >> /path/to/your/cloned/repo/config/yt-dlp-sync.log 2>&1
-```
-Important Note for Cron Jobs: When running scripts via cron, the PATH environment variable is often very limited (e.g., /usr/bin:/bin). If yt-dlp is installed in a directory not typically included in cron's default PATH (like /usr/local/bin), the script might fail with a "command not found" error for yt-dlp. You may need to explicitly set the PATH within your cron job or at the beginning of your script if yt-dlp is not found. For example: PATH=/usr/local/bin:$PATH /path/to/your/cloned/repo/yt-dlp-sync.sh.
 
 Project Structure
 ```
