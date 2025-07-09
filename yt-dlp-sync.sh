@@ -85,12 +85,18 @@ fi
 log_message "Starting YouTube Music playlist sync..."
 log_message "Running sync as user: $RUN_AS_USER"
 
-# --- Prompt for PLAYLIST_URL (Interactive) ---
-echo "---"
-read -p "Enter YouTube Music playlist URL or ID: " PLAYLIST_URL
-echo "---"
+# --- Get Playlist URL ---
+# Check if PLAYLIST_URL is defined in the .env file. If not, prompt the user.
+if [ -z "$PLAYLIST_URL" ]; then
+    log_message "Playlist URL not found in config. Prompting for input."
+    echo "---"
+    read -p "Enter YouTube Music playlist URL or ID: " PLAYLIST_URL
+    echo "---"
+else
+    log_message "Using Playlist URL from config file."
+fi
 
-# Validate PLAYLIST_URL after prompting
+# Validate PLAYLIST_URL after getting it from config or prompt
 if [ -z "$PLAYLIST_URL" ]; then
     log_message "ERROR: Playlist URL or ID cannot be empty. Exiting."
     exit 1
